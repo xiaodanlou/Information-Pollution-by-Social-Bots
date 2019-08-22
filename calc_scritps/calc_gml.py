@@ -15,16 +15,6 @@ import networkx as nx
 import cPickle as pickle
 
 
-wires = [0.1]
-phis = [5.0]
-
-node = 1000
-m = 3
-percent_bots = 0.1
-mu = None
-alpha = 15
-run_times = 3
-
 p = sys.argv[1]
 nth = sys.argv[2] # n-th model result
 rewire2 = sys.argv[3] # 0/1
@@ -32,6 +22,15 @@ data_dir = sys.argv[4]
 save_dir = sys.argv[5]
 coupled_gml_dir = sys.argv[6]
 
+node = 10000
+m = 3
+percent_bots = 0.1
+mu = None
+alpha = 15
+run_times = 3
+
+wires = [0.001, 0.005, 0.01, 0.05, 0.1, 0.3, 0.5, 0.8, 1.0]
+phis = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
 
 nodescreen_times = data_dir+'/{}/final_quality_nodescreen_{}_{}_{}_{}_{}_{}_{}_{}.pkl'
 coupled_gmls = ['directedHighCluster_{}_{}_{}_{}_{}_{}_{}_{}_coupled.gml',

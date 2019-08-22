@@ -17,8 +17,11 @@ from scipy import stats
 from collections import defaultdict
 
 
-wires = [0.001, 0.005, 0.01, 0.05, 0.1, 0.3, 0.5, 0.8, 1.0]
-phis = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+p = sys.argv[1]
+nth = sys.argv[2] # n-th model result
+nozero = True if sys.argv[3] == 'nozero' else False
+data_dir = sys.argv[4]
+save_dir = sys.argv[5]
 
 node = 10000
 m = 3
@@ -26,11 +29,8 @@ percent_bots = 0.1
 mu = None
 alpha = 15
 
-p = sys.argv[1]
-nth = sys.argv[2] # n-th model result
-nozero = True if sys.argv[3] == 'nozero' else False
-data_dir = sys.argv[4]
-save_dir = sys.argv[5]
+wires = [0.001, 0.005, 0.01, 0.05, 0.1, 0.3, 0.5, 0.8, 1.0]
+phis = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
 
 kendall_data_template_times = data_dir + '/tracked_memes_quality_and_popularity_{}_{}_{}_{}_{}_{}_{}_{}.pkl'
 

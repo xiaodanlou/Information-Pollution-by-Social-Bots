@@ -51,11 +51,11 @@ def getbins(distr_x, distr_y):
         heights.append(np.mean(distr_y[i]))
     return mids, heights
 
-def func_linear(x, a, b):
-    return a*x+b
 
-def func_non_linear(x, a, b, c):
-    return a*(x**b)+c
+p = sys.argv[1]
+nth = sys.argv[2]
+data_dir = sys.argv[3]
+save_dir = sys.argv[4]
 
 n = 10000
 m = 3
@@ -63,15 +63,8 @@ percent_bots = 0.1
 mu = None
 alpha = 15
 
-#wires = [0.0, 0.0001, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0]
 wires = [0.001, 0.005, 0.01, 0.05, 0.1, 0.3, 0.5, 0.8, 1.0]
-#phis = [1.0, 5.0, 10.0]
 phis = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
-
-p = sys.argv[1]
-nth = sys.argv[2]
-data_dir = sys.argv[3]
-save_dir = sys.argv[4]
 
 data_template_times = data_dir + '/bad_meme_selected_data_{}_{}_{}_{}_{}_{}_{}_{}.pkl'
 
