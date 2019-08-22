@@ -20,15 +20,14 @@ h_mode=$3
 b_mode=$4
 
 ### may need change ###
-logs_dir="${mode}/logs_calc"
+logs_dir="${b_mode}/logs_calc"
+coupled_gmls_dir="${b_mode}/coupled_gmls"
 if [ "$h_mode" = "normal" ]; then
-    save_dir="${b_mode}/${p}_result_datas_n${n}"
-    networkFile="gmls/directedHighCluster_${n}_${m}_${p}.gml"
-    data_dir="${b_mode}/push_model_results_p_${p}_n${n}_${nth}"
+    save_dir="${b_mode}/result_datas_p${p}_n${n}"
+    data_dir="${b_mode}/push_model_results_p${p}_n${n}_${nth}"
 elif [ "$h_mode" = "rewire" ]; then
-    save_dir="${b_mode}/${p}_result_datas_rewire2_n${n}"
-    networkFile="gmls/directedHighCluster_${n}_${m}_${p}_rewire2.gml"
-    data_dir="${b_mode}/push_model_results_p_${p}_n${n}_rewire2_${nth}"
+    save_dir="${b_mode}/result_datas_p${p}_n${n}_rewire2"
+    data_dir="${b_mode}/push_model_results_p${p}_n${n}_rewire2_${nth}"
 else
     echo "error, not support human network mode: $h_mode"
     exit 1
@@ -41,10 +40,7 @@ mkdir -p $save_dir
 
 
 echo "calc gml"
-echo "---->not rewire2"
-python ${calc_scripts_dir}/calc_gml.py $p $nth 0 $data_dir $save_dir > $logs_dir/calc_gml_not_rewire2_${p}_${nth}.log
-echo "---->rewire2"
-python ${calc_scripts_dir}/calc_gml.py $p $nth 1 $data_dir $save_dir > $logs_dir/calc_diversity_rewire2_${p}_${nth}.log
+python ${calc_scripts_dir}/calc_gml.py $p $nth 0 $data_dir $save_dir $coupled_gmls_dir > $logs_dir/calc_gml_${p}_${nth}.log
 
 
 echo "calc kendall"

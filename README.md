@@ -32,4 +32,4 @@ Information-Pollution-by-Social-Bots is the code for paper [Information Pollutio
 
 ## Attention
 
-- Our results in this [paper](https://arxiv.org/pdf/1907.06130.pdf) are based on at least 6-times simulations. If you want to get thoses results, you need run scripts `job_run.sh` on a cluster as it consumes **huge memory** and **many time**.
+- Our results in this [paper](https://arxiv.org/pdf/1907.06130.pdf) are based on at least 6-times simulations. If you want to get thoses results, you'd better follow the instruction in `job_run.sh` and run it on a cluster environment, since it will consume **huge memory** and **many time**.

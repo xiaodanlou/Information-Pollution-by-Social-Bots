@@ -199,17 +199,16 @@ def rewire_method_proxy(mid):
     return globals()["rewire_outdegree_edge"+str(mid)]
 
 
-node = 1000
-m = 3
-percent_bot = 0.1
-
-if len(sys.argv) < 4:
-    print "usage: %s <p> <rewire_ratio> <method_id>" % __file__
+if len(sys.argv) < 5:
+    print "usage: %s <node> <p> <rewire_ratio> <method_id>" % __file__
     sys.exit(0)
 
-p = float(sys.argv[1])
-ratio = float(sys.argv[2])
-method_id = int(sys.argv[3])
+m = 3
+percent_bot = 0.1
+node = int(sys.argv[1])
+p = float(sys.argv[2])
+ratio = float(sys.argv[3])
+method_id = int(sys.argv[4])
 
 bots_num = int(percent_bot*node)  # number of the bots in the system
 

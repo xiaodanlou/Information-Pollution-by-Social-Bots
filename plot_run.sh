@@ -20,11 +20,11 @@ n=10000
 ### need change ###
 logs_dir="${b_mode}/logs_plot"
 if [ "$h_mode" = "normal" ]; then
-    save_dir="${b_mode}/${p}_result_images_n${n}"
-    data_dir="${b_mode}/${p}_result_datas_n${n}"
+    save_dir="${b_mode}/result_images_p${p}_n${n}"
+    data_dir="${b_mode}/result_datas_p${p}_n${n}"
 elif [ "$h_mode" = "rewire" ]; then
-    save_dir="${b_mode}/${p}_result_images_rewire2_n${n}"
-    data_dir="${b_mode}/${p}_result_datas_rewire2_n${n}"
+    save_dir="${b_mode}/result_images_p${p}_n${n}_rewire2"
+    data_dir="${b_mode}/result_datas_p${p}_n${n}_rewire2"
 else
     echo "error, not support human network mode: $h_mode"
     exit 1
