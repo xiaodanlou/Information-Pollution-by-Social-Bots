@@ -78,7 +78,7 @@ def rewire_outdegree_edge(G_old):
 
 
 if len(sys.argv) < 3:
-    print "usage: %s <n> <m> <p>" % __file__
+    print "Usage: %s <n> <m> <p>" % __file__
     sys.exit(0)
 
 #========== PARAMETERS ==========

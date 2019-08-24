@@ -1,10 +1,10 @@
 #!/bin/bash
 
 if [ $# != 5 ];then
-    echo "usage: $0 <n-th> <n> <p> <human network mode> <infiltration mode>"
+    echo "Usage: $0 <n-th> <n> <p> <human network mode> <infiltration mode>"
     echo "human network mode=normal/rewire"
     echo "infiltration mode=random/prefer"
-    exit 1
+    exit 0
 fi
 
 
@@ -16,8 +16,8 @@ percent_bots=0.1
 mu=none
 alpha=15
 run_times=3
-track_memes_after=10 #10000
-max_memes_track=10  #100000
+track_memes_after=10000
+max_memes_track=100000
 h_mode=$4
 i_mode=$5
 

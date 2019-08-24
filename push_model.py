@@ -190,9 +190,9 @@ wire         = float(sys.argv[5])
 phi          = float(sys.argv[6]) # the fitness
 alpha        = None if sys.argv[7] == 'none' else int(sys.argv[7])
 mu           = None if sys.argv[8] == 'none' else float(sys.argv[8]) # probability to choose existing meme, if None, then from empirical distribution
-run_times           = int(sys.argv[9]) #3 # simulation times afer steady
-track_memes_after   = int(sys.argv[10]) #10**4 # only save memes after this step
-max_memes_track     = int(sys.argv[11]) #10**5 # number of memes to track after track_memes_after
+run_times           = int(sys.argv[9])  # simulation times afer steady
+track_memes_after   = int(sys.argv[10]) # only track memes after this step
+max_memes_track     = int(sys.argv[11]) # number of memes to track after track_memes_after
 
 
 networkFile     = sys.argv[12]

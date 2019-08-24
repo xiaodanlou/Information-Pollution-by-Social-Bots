@@ -4,7 +4,7 @@ if [ $# != 4 ];then
     echo "Usage: $0 <n> <p> <human network mode> <infiltration mode>"
     echo "human network mode=normal/rewire"
     echo "infiltration mode=random/prefer"
-    exit 1
+    exit 0
 fi
 
 
