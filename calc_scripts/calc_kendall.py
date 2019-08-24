@@ -17,28 +17,29 @@ from scipy import stats
 from collections import defaultdict
 
 
-p = sys.argv[1]
-nth = sys.argv[2] # n-th model result
-nozero = True if sys.argv[3] == 'nozero' else False
-data_dir = sys.argv[4]
-save_dir = sys.argv[5]
+#========== PARAMETERS ==========
+nth          = int(sys.argv[1]) # n-th model result
 
-node = 10000
-m = 3
-percent_bots = 0.1
-mu = None
-alpha = 15
+n            = int(sys.argv[2])
+m            = int(sys.argv[3])
+p            = float(sys.argv[4])
 
-wires = [0.001, 0.005, 0.01, 0.05, 0.1, 0.3, 0.5, 0.8, 1.0]
-phis = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+percent_bots = float(sys.argv[5])
+wires        = map(float, sys.argv[6].split(','))
+phis         = map(float, sys.argv[7].split(','))
+alpha        = None if sys.argv[8] == 'none' else int(sys.argv[8])
+mu           = None if sys.argv[9] == 'none' else float(sys.argv[9])
+nozero       = True if sys.argv[10] == 'nozero' else False
+
+data_dir     = sys.argv[11]
+save_dir     = sys.argv[12]
+#========= END PARAMETERS =========
 
 kendall_data_template_times = data_dir + '/tracked_memes_quality_and_popularity_{}_{}_{}_{}_{}_{}_{}_{}.pkl'
-
 kendall_datas_dict = {}
-
 for h in phis:
     for w in wires:
-        fname = kendall_data_template_times.format(node, m, p, percent_bots, w, h, alpha, mu)
+        fname = kendall_data_template_times.format(n, m, p, percent_bots, w, h, alpha, mu)
         fp = open(fname, 'rb')
         data = pickle.load(fp)
         fp.close()

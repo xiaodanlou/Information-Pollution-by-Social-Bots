@@ -18,18 +18,18 @@ import cPickle as pickle
 import matplotlib.pyplot as plt
 
 
-data_dir = sys.argv[1]
-save_dir = sys.argv[2]
-
-wires = [0.5]
-phis = [1.0, 5.0, 10.0]
+#========== PARAMETERS ==========
+wires    = map(float, sys.argv[1].split(','))
+phis     = map(int, sys.argv[2].split(','))
+data_dir = sys.argv[3]
+save_dir = sys.argv[4]
+#========= END PARAMETERS =========
 
 fp = open(data_dir + '/bad_meme_selected_datas.pkl', 'rb')
 bad_meme_select_data = pickle.load(fp)
 fp.close()
 
 fig_name_template = save_dir + '/bad_meme_selected_distr_{}.png'
-
 for h in phis:
     plt.figure(figsize=(10, 5))
     for w in wires:

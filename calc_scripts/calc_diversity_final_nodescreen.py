@@ -14,33 +14,34 @@ import numpy as np
 import cPickle as pickle
 
 
-p = sys.argv[1]
-nth = sys.argv[2] # n-th model result
-normal = True if sys.argv[3] == 'normal' else False
-nozero = True if sys.argv[4] == 'nozero' else False
-data_dir = sys.argv[5]
-save_dir = sys.argv[6]
+#========== PARAMETERS ==========
+nth          = int(sys.argv[1]) # n-th model result
 
-node = 10000
-m = 3
-percent_bots = 0.1
-mu = None
-alpha = 15
-run_times = 3
+n            = int(sys.argv[2])
+m            = int(sys.argv[3])
+p            = float(sys.argv[4])
 
-wires = [0.001, 0.005, 0.01, 0.05, 0.1, 0.3, 0.5, 0.8, 1.0]
-phis = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+percent_bots = float(sys.argv[5])
+wires        = map(float, sys.argv[6].split(','))
+phis         = map(float, sys.argv[7].split(','))
+alpha        = None if sys.argv[8] == 'none' else int(sys.argv[8])
+mu           = None if sys.argv[9] == 'none' else float(sys.argv[9])
+run_times    = int(sys.argv[10])
+
+normal       = True if sys.argv[11] == 'normal' else False
+nozero       = True if sys.argv[12] == 'nozero' else False
+data_dir     = sys.argv[13]
+save_dir     = sys.argv[14]
+#========= END PARAMETERS =========
 
 nodescreen_times = data_dir+'/{}/final_quality_nodescreen_{}_{}_{}_{}_{}_{}_{}_{}.pkl'
-
 diversity_datas_dict = {}
-
-normal_node = node
+normal_node = n
 for h in phis:
     for w in wires:
         diversities_temp = []
         for iter_ in range(run_times):
-            fname = nodescreen_times.format(iter_, node, m, p, percent_bots, w, h, alpha, mu)
+            fname = nodescreen_times.format(iter_, n, m, p, percent_bots, w, h, alpha, mu)
             fp = open(fname)
             temp = pickle.load(fp)
             fp.close()

@@ -52,24 +52,25 @@ def getbins(distr_x, distr_y):
     return mids, heights
 
 
-p = sys.argv[1]
-nth = sys.argv[2]
-data_dir = sys.argv[3]
-save_dir = sys.argv[4]
+#========== PARAMETERS ==========
+nth          = int(sys.argv[1]) # n-th model result
 
-n = 10000
-m = 3
-percent_bots = 0.1
-mu = None
-alpha = 15
+n            = int(sys.argv[2])
+m            = int(sys.argv[3])
+p            = float(sys.argv[4])
 
-wires = [0.001, 0.005, 0.01, 0.05, 0.1, 0.3, 0.5, 0.8, 1.0]
-phis = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+percent_bots = float(sys.argv[5])
+wires        = map(float, sys.argv[6].split(','))
+phis         = map(float, sys.argv[7].split(','))
+alpha        = None if sys.argv[8] == 'none' else int(sys.argv[8])
+mu           = None if sys.argv[9] == 'none' else float(sys.argv[9])
+
+data_dir     = sys.argv[10]
+save_dir     = sys.argv[11]
+#========= END PARAMETERS =========
 
 data_template_times = data_dir + '/bad_meme_selected_data_{}_{}_{}_{}_{}_{}_{}_{}.pkl'
-
 bad_meme_select_datas_dict = {}
-
 for h in phis:
     for w in wires:
         merge = {}
@@ -77,11 +78,6 @@ for h in phis:
         fp = open(fname, 'rb')
         data = pickle.load(fp)
         fp.close()
-        #fitness, good_selected, bad_selected = zip(*data)
-        #good_selected = np.array(good_selected) + 1
-        #bad_selected = np.array(bad_selected) + 1
-        #print 'max good selected:', max(good_selected)
-        #print 'max bad selected:', max(bad_selected)
 
         for idx in xrange(len(data)):
             fit  = data[idx][0]

@@ -161,6 +161,8 @@ def create_injection_network_prefer(G_normal, normal_n, bots_n, m, p, re_p):
         for j in connect_normal:
             G_whole.add_edge(j, i) # add directed link from `normal` to `bot`
 
+    return G_whole
+
 def inverseCdf(x, phi):
     return 1 - x**(1/(phi+1))
 
@@ -188,24 +190,22 @@ wire         = float(sys.argv[5])
 phi          = float(sys.argv[6]) # the fitness
 alpha        = None if sys.argv[7] == 'none' else int(sys.argv[7])
 mu           = None if sys.argv[8] == 'none' else float(sys.argv[8]) # probability to choose existing meme, if None, then from empirical distribution
+run_times           = int(sys.argv[9]) #3 # simulation times afer steady
+track_memes_after   = int(sys.argv[10]) #10**4 # only save memes after this step
+max_memes_track     = int(sys.argv[11]) #10**5 # number of memes to track after track_memes_after
 
-networkFile     = sys.argv[9]
-coupled_gml     = sys.argv[10]
-results_save_to = sys.argv[11]
-mode            = sys.argv[12] # random/prefer
+
+networkFile     = sys.argv[12]
+coupled_gml     = sys.argv[13]
+results_save_to = sys.argv[14]
+mode            = sys.argv[15] # random/prefer
 
 bots_num            = int(percent_bots*n)  # number of the bots in the system
 qua_of_low_qua_meme = 0
 screen_size         = 15
-track_memes_after   = 10**4 # only save memes after this step
-max_memes_track     = 10**5 # number of memes to track after track_memes_after
-times               = 3 # simulation times afer steady
-
 muDisFile    = './twitter_mu_distribution.dat'
 alphaDisFile = './2016_apv_distr_integer.txt'
 
-
-#================================
 print "******** PARAMS *********"
 print 'Network: BA: n:{0}, m:{1}, bot:{2} screen:{3}'.format(n, m, bots_num, screen_size)
 print 'wire: {} phi: {}'.format(wire, phi)
@@ -213,7 +213,7 @@ print 'alpha: {0} mu: {1} '.format(alpha, mu)
 print 'Track memes after {0} steps'.format(track_memes_after)
 print 'Max memes to track: {0}'.format(max_memes_track)
 print "*************************"
-
+#========= END PARAMETERS =========
 
 print 'Init mu&alpha empirical distribution data...'
 alphas_ = []
@@ -369,9 +369,9 @@ bad_meme_propagation_path_all = []
 #each_step_normal_nodes_avg_quality_steady2final = defaultdict(list)
 bad_memes_select_nums_all.append(bad_memes_select_nums)
 
-print "Please wait while {} times simulations completes..".format(times)
+print "Please wait while {} times simulations completes..".format(run_times)
 max_meme_size = 0
-for iter_ in range(times):
+for iter_ in range(run_times):
     meme_count = 0
     meme_dead = 0
 
@@ -584,7 +584,7 @@ pickle.dump(bad_meme_sel_data, fp)
 ### normal node bad meme selected process ###
 normal_node_bad_memes_select_nums_final = dict()
 for key, val in normal_node_bad_memes_select_nums.iteritems():
-    normal_node_bad_memes_select_nums_final[key] = [val[0], val[1]*1.0/times] # times=5
+    normal_node_bad_memes_select_nums_final[key] = [val[0], val[1]*1.0/run_times]
 
 fp = open(results_save_to + '/normal_node_bad_meme_sel_{}_{}_{}_{}_{}_{}_{}_{}.pkl'.format(n, m, p, percent_bots, wire, phi, alpha, mu), 'wb')
 pickle.dump(normal_node_bad_memes_select_nums_final, fp)

@@ -21,11 +21,12 @@ from itertools import chain
 from collections import defaultdict
 
 
-data_dir = sys.argv[1]
-save_dir = sys.argv[2]
-
-wires = [0.001, 0.005, 0.01]
-phis = [1.0, 10.0]
+#========== PARAMETERS ==========
+wires    = map(float, sys.argv[1].split(','))
+phis     = map(int, sys.argv[2].split(','))
+data_dir = sys.argv[3]
+save_dir = sys.argv[4]
+#========= END PARAMETERS =========
 
 low_high_data = []
 fp = open(data_dir + '/low_high_datas.pkl', 'rb')
@@ -52,10 +53,16 @@ for i, h in enumerate(phis):
         hs = []
         for k, v in h_dict.iteritems():
             hs.append([k, np.mean(v)])
+        if len(hs) == 0:
+            print >> sys.stderr, "something wrong!"
+            sys.exit(1)
         h_mids, h_heights = zip(*sorted(hs, key=lambda x:x[0]))
         ls = []
         for k, v in l_dict.iteritems():
             ls.append([k, np.mean(v)])
+        if len(ls) == 0:
+            print >> sys.stderr, "something wrong!"
+            sys.exit(1)
         l_mids, l_heights = zip(*sorted(ls, key=lambda x:x[0]))
 
         ax = axs[i][j]

@@ -46,14 +46,16 @@ def draw_heatmap(ax, data, xticks, yticks, xlabel, ylabel, cmap, title, vmax=Non
     plt.title(title)
 
 
-data_dir = sys.argv[1]
-save_dir = sys.argv[2]
+#========== PARAMETERS ==========
+wires    = map(float, sys.argv[1].split(','))
+phis1    = map(int, sys.argv[2].split(','))
+phis2    = map(int, sys.argv[3].split(','))
+data_dir = sys.argv[4]
+save_dir = sys.argv[5]
+#========= END PARAMETERS =========
 
 # data options
-wires = [0.001, 0.005, 0.01, 0.05, 0.1, 0.3, 0.5, 0.8, 1.0]
 new_wires = wires
-phis1  = [1.0, 5.0, 10.0]
-phis2  = phis1
 
 # plot options
 xs = phis2
