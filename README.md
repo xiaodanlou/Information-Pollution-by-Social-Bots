@@ -34,8 +34,16 @@ Our code is based on **Python 2.7**, and you can install the necessary packages 
 
 **bot network mode:** *random/prefer*, means bot network mode
 
+##file descriptions
+- create_human_network.py: the codes in this file is to create a human social network using a directed variant of the random-walk growth model. It also includes the codes of generating a control group network with an additional rewiring mechanism.
+
+- push_model.py: the codes in this file is simulating the propagation process of meme in social networks.
+
+- calc_scritps/calc_low_high.py: calculate the distribution of 
+
+
 ## Attention
 
-- Our results in this [paper](https://arxiv.org/pdf/1907.06130.pdf) are based on at least 6-times simulations. If you want to get thoses results, you'd better follow the instruction in `job_run.sh` and run it on a cluster environment, since it will consume **huge memory** and **many time**.
+- Our results in this [paper](https://arxiv.org/pdf/1907.06130.pdf) are based on at least 10-times simulations. If you want to get thoses results, you'd better follow the instruction in `job_run.sh` and run it on a cluster environment, since it will consume **huge memory** and **many time**.
 
 - There are exist some params with default value (get same results in the paper) in the scirpts, you may need change them if you want to try something else.
