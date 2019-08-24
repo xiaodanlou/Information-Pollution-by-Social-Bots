@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [ "-h" == $1 ];then
-    echo "Usage: $0 <p> <human network mode> <bot network mode>"
+    echo "Usage: $0 <p> <human network mode> <infiltration mode>"
     echo "human network mode=normal/rewire"
-    echo "bot network mode=random/prefer"
+    echo "infiltration mode=random/prefer"
     exit 1
 fi
 
