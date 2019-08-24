@@ -4,7 +4,7 @@
 """
 @author: rosdays
 
-@description: calculate low&high quality distribution data
+@description: calculate popularity distributions of low quality memes and high quality memes
 """
 
 from __future__ import division
