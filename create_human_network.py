@@ -4,7 +4,7 @@
 """
 @author: rosdays
 
-@description: create human network
+@description: create human network: normal or with rewire strategy
 """
 
 from __future__ import division
@@ -63,11 +63,11 @@ class DirectedHighCluster_out(object):
         return self.G
 
 def rewire_outdegree_edge(G_old):
-    print "rewire: 断1条边并重连1条边--选择入度=0的节点重连，入度大于1的节点断边"
+    print "rewire: randomly cut off one edge of a node which indegree larger than 2 and rewire it to a zero-indegree node.断1条边并重连1条边--选择入度=0的节点重连，入度大于1的节点断边"
     g = nx.DiGraph(G_old)
     zero_indegree_node = [k[0] for k in g.in_degree().items() if k[1] == 0]
     for node in zero_indegree_node:
-        fil = [k[0] for k in g.in_degree().items() if k[1] > 1]
+        fil = [k[0] for k in g.in_degree().items() if k[1] >= 2]
         target = random.choice(fil)
         sour = random.choice(g.predecessors(target))
         while sour == node:
