@@ -38,19 +38,19 @@ Our code is based on **Python 2.7**, and you can install the necessary packages 
 
 - **merge.py:** Script to merge the statistical data from multiple simulations of the model and calculate the average results.
 
-### Files in calc_scrips
+### Files in calc_scripts
 
-- **calc_scritps/calc_avg_quality_final_nodescreen.py:** Calculate the average quality of news feeds in human network.
+- **calc_scripts/calc_avg_quality_final_nodescreen.py:** Calculate the average quality of news feeds in human network.
 
-- **calc_scritps/calc_diversity_final_nodescreen.py:**  Calculate the average diversity of news feeds in human network.
+- **calc_scripts/calc_diversity_final_nodescreen.py:**  Calculate the average diversity of news feeds in human network.
 
-- **calc_scritps/calc_kendall.py:** Calculate the kendall-tau correlation between popularity and quality of tracked memes.
+- **calc_scripts/calc_kendall.py:** Calculate the kendall-tau correlation between popularity and quality of tracked memes.
 
-- **calc_scritps/calc_low_high.py:** Calculate the popularity of high- and low-quality memes.
+- **calc_scripts/calc_low_high.py:** Calculate the popularity of high- and low-quality memes.
 
-- **calc_scritps/calc_bad_meme_sel_distr.py:** Calculate the number of low-quality memes posted by bots and humans.
+- **calc_scripts/calc_bad_meme_sel_distr.py:** Calculate the number of low-quality memes posted by bots and humans.
 
-### Files in plot_scrips
+### Files in plot_scripts
 
 - **plot_scripts/plot_distr_and_heatmap.py:** Plot the distributions and the heatmap of average quality, average diversity, and kendall-tau with different parameters.
 
@@ -68,6 +68,6 @@ Our code is based on **Python 2.7**, and you can install the necessary packages 
 
 ## Notes
 
-- Our results in the paper are based on averages across at least 10 simulation runs. If you want to reproduce thoses results,  follow the instruction in `job_run.sh`. We suggest running the simulations on a cluster environment, since they will need a lot of memory and running time. 
+- Our results in the paper are based on averages across at least 10 simulation runs. If you want to reproduce thoses results,  follow the instruction in `job_run.sh`. We suggest running the simulations on a cluster environment, since they will need a lot of memory and CPU time. 
 
 - Some parameters in the scirpts (`job_run.sh`, `calc_run.sh`, `plot_run.sh`) have default values to reproduce the results in the paper; you may need change them if you want to explore other scenarios.
