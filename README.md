@@ -1,6 +1,6 @@
 # Information-Pollution-by-Social-Bots
 
-Information-Pollution-by-Social-Bots is the code for paper [Information Pollution by Social Bots](https://arxiv.org/pdf/1907.06130.pdf).
+This repository contains code to reproduce the results in the paper [*Information Pollution by Social Bots*](https://arxiv.org/abs/1907.06130).
 
 ## Environment
 
@@ -8,31 +8,25 @@ Our code is based on **Python 2.7**, and you can install the necessary packages 
 
 ## Usage
 
-- **Simulate**
+- **Simulations**
 
-```bash
-./job_run.sh <n-th> <p> <human network mode> <infiltration mode>
-```
+`bash job_run.sh <n> <p> <human network mode> <infiltration mode>`
 
-- **Calculate**
+- **Calculations**
 
-```bash
-./calc_run.sh <n-th> <p> <human network mode> <infiltration mode>
-```
+`bash calc_run.sh <n-th> <p> <human network mode> <infiltration mode>`
 
-- **Plot**
+- **Plots**
 
-```bash
-./plot_run <p> <human network mode> <infiltration mode>
-```
+`bash plot_run <p> <human network mode> <infiltration mode>`
 
-***n-th:*** *1, 2, ..., n*, means n-th simulation
+***n:*** n-th simulation (integer)
 
-***p:*** *0.0, 0.5, 1.0*, means human network trial probabilty
+***p:*** random-walk model triadic closure probability for human network (see paper);
 
-***human network mode:*** *normal/rewire*, means human network mode
+***human network mode:*** human network mode (see paper); values are *normal* or *rewire*
 
-***infiltration mode:*** *random/prefer*, means how do bots connect with humans.
+***infiltration mode:*** means whether bots connect with humans at random or with preference for hubs; values are *random* or *prefer*
 
 ## File descriptions
 
@@ -42,7 +36,7 @@ Our code is based on **Python 2.7**, and you can install the necessary packages 
 
 - **merge.py:** Merge the statistics data from multiple simulations of push model and calculate the average results.
 
-***files in calc_scrips***
+### files in calc_scrips
 
 - **calc_scritps/calc_avg_quality_final_nodescreen.py:** Calculate the average quality of news feeds in human network.
 
@@ -54,7 +48,7 @@ Our code is based on **Python 2.7**, and you can install the necessary packages 
 
 - **calc_scritps/calc_bad_meme_sel_distr.py:** Calculate the number of low-quality memes posted by bots and by humans.
 
-***files in plot_scrips***
+### files in plot_scrips
 
 - **plot_scripts/plot_distr_and_heatmap.py:** Plot the distributions and the heatmap of average quality, average diversity and kendall under different params.
 
@@ -64,7 +58,7 @@ Our code is based on **Python 2.7**, and you can install the necessary packages 
 
 - **plot_scripts/plot_avg_quality_final_nodescreen_relative.py:** Plot the relative average quality of prefer and random mode under different params.
 
-## Attention
+## Notes
 
 - Our results in this [paper](https://arxiv.org/pdf/1907.06130.pdf) are based on at least 10-times simulations. If you want to get thoses results, you'd better follow the instruction in `job_run.sh` and run it on a cluster environment, since it will consume **huge memory** and **many time**.
 
