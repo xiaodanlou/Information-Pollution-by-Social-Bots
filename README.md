@@ -14,7 +14,7 @@ Our code is based on **Python 2.7**, and you can install the necessary packages 
 
 - **Calculations**
 
-`bash calc_run.sh <n-th> <p> <human network mode> <infiltration mode>`
+`bash calc_run.sh <n> <p> <human network mode> <infiltration mode>`
 
 - **Plots**
 
