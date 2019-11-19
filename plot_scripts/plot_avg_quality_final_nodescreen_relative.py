@@ -17,21 +17,26 @@ import matplotlib.pyplot as plt
 wires    = map(float, sys.argv[1].split(','))
 phis     = map(int, sys.argv[2].split(','))
 nozero   = True if sys.argv[3] == 'nozero' else False
-data_dir = sys.argv[4]
-save_dir = sys.argv[5]
+random_data_dir = sys.argv[4]
+prefer_data_dir = sys.argv[5]
+save_dir = sys.argv[6]
 #========= END PARAMETERS =========
 
 new_wires = wires
 models = ['random', 'prefer']
 if nozero:
-    avg_quality_data_file_template = data_dir + '/avg_quality_datas_no_zero.pkl'
+    avg_quality_data_file_template = 'avg_quality_datas_no_zero.pkl'
 else:
-    avg_quality_data_file_template = data_dir + '/avg_quality_datas_zero.pkl'
+    avg_quality_data_file_template = 'avg_quality_datas_zero.pkl'
 
 model_data = {}
 for model in models:
-
-    data_path = avg_quality_data_file_template
+    if model == 'random':
+        data_path = random_data_dir + '/' + avg_quality_data_file_template
+    elif model == 'prefer':
+        data_path = prefer_data_dir + '/' + avg_quality_data_file_template
+    else: # error
+        continue
     fp = open(data_path, 'rb')
     avg_quality_data = pickle.load(fp)
     fp.close()
@@ -43,7 +48,8 @@ for model in models:
         avg_qualities_mean = []
 
         for w in wires:
-            print len(avg_quality_data[(h, w)])
+            if len(avg_quality_data[(h, w)]) == 0: # data invalid!!!
+                continue
             avg_qualities.append(avg_quality_data[(h, w)])
             avg_qualities_mean.append(np.mean(avg_quality_data[(h, w)]))
 

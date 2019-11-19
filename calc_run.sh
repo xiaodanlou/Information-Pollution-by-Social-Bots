@@ -15,7 +15,7 @@ p=$3
 percent_bots=0.1
 mu=none
 alpha=15
-run_times=3
+run_times=5
 h_mode=$4
 i_mode=$5
 wire="0.001,0.005,0.01,0.05,0.1,0.3,0.5,0.8,1.0"
@@ -23,6 +23,7 @@ phi="1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0"
 
 ### may need change ###
 logs_dir="${i_mode}/logs_calc"
+network_dir="gmls"
 coupled_gmls_dir="${i_mode}/coupled_gmls"
 if [ "$h_mode" = "normal" ]; then
     save_dir="${i_mode}/result_datas_p${p}_n${n}"
@@ -75,3 +76,8 @@ python ${calc_scripts_dir}/calc_diversity_final_nodescreen.py $nth $n $m $p $per
 echo "calc bad meme dist"
 echo "may take a while, please wait..."
 python ${calc_scripts_dir}/calc_bad_meme_sel_distr.py $nth $n $m $p $percent_bots $wire $phi $alpha $mu $data_dir $save_dir > $logs_dir/calc_bad_meme_sel_${p}_${nth}.log
+
+
+echo "calc gini"
+echo "may take a while, please wait..."
+python ${calc_scripts_dir}/calc_gini.py $nth $n $m $p $percent_bots $wire $phi $alpha $mu $run_times $data_dir $save_dir $network_dir > $logs_dir/calc_gini_${p}_${nth}.log

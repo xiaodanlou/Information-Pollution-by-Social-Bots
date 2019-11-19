@@ -18,7 +18,9 @@ Our code is based on **Python 2.7**, and you can install the necessary packages 
 
 - **Plots**
 
-`bash plot_run <p> <human network mode> <infiltration mode>`
+`bash plot_run.sh <p> <human network mode> <infiltration mode>`
+
+`bash plot_run_relative.sh <p> <human network mode>`
 
 ### Parameters
 
@@ -50,6 +52,8 @@ Our code is based on **Python 2.7**, and you can install the necessary packages 
 
 - **calc_scripts/calc_bad_meme_sel_distr.py:** Calculate the number of low-quality memes posted by bots and humans.
 
+- **calc_scripts/calc_gini.py:** Calculate the gini-coefficient of low-quality memes posted by bots and humans.
+
 ### Files in plot_scripts
 
 - **plot_scripts/plot_distr_and_heatmap.py:** Plot the distributions and the heatmap of average quality, average diversity, and kendall-tau with different parameters.
@@ -68,6 +72,6 @@ Our code is based on **Python 2.7**, and you can install the necessary packages 
 
 ## Notes
 
-- Our results in the paper are based on averages across at least 10 simulation runs. If you want to reproduce thoses results,  follow the instruction in `job_run.sh`. We suggest running the simulations on a cluster environment, since they will need a lot of memory and CPU time. 
+- Our results in the paper are based on averages across at least 10 simulation runs. If you want to reproduce thoses results,  follow the instruction in `job_run.sh`. We suggest running the simulations on a cluster environment, since they will need a lot of memory and CPU time.
 
-- Some parameters in the scirpts (`job_run.sh`, `calc_run.sh`, `plot_run.sh`) have default values to reproduce the results in the paper; you may need change them if you want to explore other scenarios.
+- Some parameters in the scirpts (`job_run.sh`, `calc_run.sh`, `plot_run.sh`, `plot_run_relative.sh`) have default values to reproduce the results in the paper; you may need change them if you want to explore other scenarios.

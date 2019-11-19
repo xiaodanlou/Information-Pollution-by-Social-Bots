@@ -37,6 +37,8 @@ for h in phis:
         all_mids = []
         all_heights = []
         for pair in all_mids_heights_pairs:
+            if len(zip(*pair)) < 2: # data invalid!!!
+                continue
             mids_, heights_ = zip(*pair)
             all_mids.append(mids_)
             all_heights.append(heights_)

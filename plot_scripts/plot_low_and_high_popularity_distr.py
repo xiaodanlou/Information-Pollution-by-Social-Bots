@@ -36,6 +36,8 @@ fp.close()
 fig, axs = plt.subplots(len(phis), len(wires), figsize=(14, 8))
 for i, h in enumerate(phis):
     for j, w in enumerate(wires):
+        if len(zip(*low_high_data[(h, w)])) < 4: # data invalid!!!
+            continue
         h_mids_, h_heights_, l_mids_, l_heights_ = zip(*low_high_data[(h, w)])
 
         h_mids_all = chain.from_iterable(h_mids_) # flat list of list

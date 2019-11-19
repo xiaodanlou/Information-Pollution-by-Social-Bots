@@ -41,6 +41,7 @@ python merge.py "${data_dir}/diversity_datas_no_zero_*.pkl"
 python merge.py "${data_dir}/diversity_datas_zero_*.pkl"
 python merge.py "${data_dir}/bad_meme_selected_datas_*.pkl"
 python merge.py "${data_dir}/low_high_datas_*.pkl"
+python merge.py "${data_dir}/gini_datas_*.pkl"
 
 
 echo "plot low&high distr"
@@ -63,12 +64,3 @@ echo "plot bad meme selected distr"
 wire="0.5"
 phi="1,5,10"
 python ${plot_scripts_dir}/plot_bad_meme_sel_distr.py $wire $phi $data_dir $save_dir > $logs_dir/plot_bad_meme_sel_distr_${p}.log
-
-
-echo "plot relative average quality"
-wire="0.001,0.005,0.01,0.05,0.1,0.3,0.5,0.8,1.0"
-phi="1,5,10"
-echo "---->nozero"
-python ${plot_scripts_dir}/plot_avg_quality_final_nodescreen_relative.py $wire $phi nozero $data_dir $save_dir > $logs_dir/plot_bad_meme_sel_distr_${p}_nozero.log
-echo "---->zero"
-python ${plot_scripts_dir}/plot_avg_quality_final_nodescreen_relative.py $wire $phi zero $data_dir $save_dir > $logs_dir/plot_bad_meme_sel_distr_${p}_zero.log
